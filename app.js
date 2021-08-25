@@ -31,7 +31,6 @@ let clickPlaySound = function () {
     let id = this.id;
     this.classList.add('playing')
     for (let j = 0; j < keys.length; j++) {
-        console.log('audio.dataKey')
         if (audio[j].id === id) {
             audio[j].currentTime = 0;
             audio[j].play();
@@ -42,15 +41,23 @@ let clickPlaySound = function () {
 keys.forEach(key => key.addEventListener('click', clickPlaySound));
 
 // switching light and dark theme
-const page = document.querySelector('.page')
-const themeButton = document.querySelector('.theme-button')
 
+const themeButton = document.querySelector('.theme-button')
 themeButton.onclick = function () {
-    page.classList.toggle('dark-theme')
-    page.classList.toggle('light-theme')
+
+    let theme = document.getElementById('theme')
+    if (theme.getAttribute('href') == 'style-dark.css') {
+        theme.href = 'style-light.css'
+    }
+    else {
+        theme.href = 'style-dark.css'
+    }
 }
+
+
+
 
 console.log(
     ' 1. Воспроизвести исходное приложение - 10 баллов; \n 2. Дополнил исходный проект обязательным дополнительным функционалом: звуки проигрываются также при кликах мышкой - 10 баллов; \n 3.Дополнил исходный проект дополнительным функционалом: возможность переключения светлой и темной темы - 10 баллов'
-    )
+)
 
